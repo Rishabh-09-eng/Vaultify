@@ -14,8 +14,10 @@ const Manager = () => {
   const [form, setform] = useState({ site: "", username: "", password: "" })
   const [passwordArray, setpasswordArray] = useState([])
 
+  const API = "https://vaultify-1-l9s6.onrender.com";
+
   const getPass =async () =>{
-    let req = await fetch("http://localhost:3000/")
+    let req = await fetch(`${API}/`)
     let passwords = await req.json()
     setpasswordArray(passwords)
   }
@@ -49,7 +51,7 @@ const Manager = () => {
     const newPass = {...form, id: uuidv4()}
     if(newPass.site.trim() && newPass.username.trim() && newPass.password.trim()){
       setpasswordArray([...passwordArray, newPass])
-      let res = await fetch("http://localhost:3000/",{method: "POST", headers:{"Content-Type": "application/json"},
+      let res = await fetch(`${API}/`,{method: "POST", headers:{"Content-Type": "application/json"},
       body: JSON.stringify(newPass) })
       setform({site: "", username: "", password: ""})
       toast.success("Password saved!");
@@ -64,7 +66,7 @@ const Manager = () => {
   if (c) {
     setpasswordArray(passwordArray.filter(item => item.id !== id));
 
-    await fetch("http://localhost:3000/", {
+    await fetch(`${API}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -86,7 +88,7 @@ const Manager = () => {
     });
 
     setpasswordArray(passwordArray.filter(item=>item.id!==id)) 
-    await fetch("http://localhost:3000/", {
+    await fetch(`${API}/`, {
     method: "DELETE",
     headers: {
         "Content-Type": "application/json"

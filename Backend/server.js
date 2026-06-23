@@ -5,7 +5,6 @@ const bodyparser = require('body-parser')
 const cors = require('cors')
 
 dotenv.config()
-console.log("MONGO_URI =", process.env.MONGO_URI);
 
 const url = process.env.MONGO_URI;
 const client = new MongoClient(url);
