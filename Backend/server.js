@@ -16,7 +16,20 @@ const port = process.env.PORT || 3000;
 app.use(bodyparser.json())
 app.use(cors())
 
-client.connect();
+async function startServer() {
+  try {
+    await client.connect();
+    console.log("✅ Connected to MongoDB Atlas");
+
+    app.listen(port, () => {
+      console.log(`🚀 Server running on port ${port}`);
+    });
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+  }
+}
+
+startServer();
 
 app.get('/', async(req, res) => {
     const db = client.db(dbName);
@@ -41,6 +54,3 @@ app.delete('/', async(req, res) => {
     res.send({success: true, result: findResult})
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
