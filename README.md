@@ -1,5 +1,7 @@
 # 🔐 Vaultify
 
+> 🚀 A full-stack password manager built as a MERN stack learning project.
+
 Vaultify is a full-stack password manager that allows users to securely store, manage, edit, and delete their website credentials. It features a modern responsive interface built with React and Tailwind CSS, while the backend is powered by Express.js and MongoDB.
 
 ---
@@ -83,6 +85,22 @@ node server.js
 > Make sure MongoDB is running locally before starting the backend server.
 
 ---
+
+## Current Limitations
+
+This project is a learning-focused full-stack password manager.
+
+- Passwords are stored in plain text (no encryption yet).
+- No user authentication.
+- All users currently share the same password collection.
+- Intended for educational and portfolio purposes only.
+
+Future versions will include:
+- User authentication
+- Password encryption
+- Per-user password storage
+- Search and filtering
+- Password generator
 
 
 ## 🌱 Future Improvements
